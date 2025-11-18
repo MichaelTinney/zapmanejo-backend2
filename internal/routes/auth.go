@@ -7,8 +7,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
-	"zapmanejo-backend2/internal/database"
-	"zapmanejo-backend2/internal/models"
+	"zapmanejo-cleanbackend/internal/database"
+	"zapmanejo-cleanbackend/internal/models"
 )
 
 func SetupAuthRoutes(app *fiber.App) {
