@@ -7,8 +7,8 @@ import (
 	"os"
 
 	"github.com/gofiber/fiber/v2"
-	"zapmanejo-backend2/internal/models"
-	"zapmanejo-backend2/internal/database"
+	"zapmanejo-cleanbackend/internal/models"
+	"zapmanejo-cleanbackend/internal/database"
 )
 
 func SetupWhatsAppRoutes(app *fiber.App) {
