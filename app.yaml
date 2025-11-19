@@ -2,6 +2,7 @@ name: zapmanejo-cleanbackend
 services:
 - name: backend
   git:
+    # TODO: Update YOUR_USERNAME with your actual GitHub username
     repo_clone_url: https://github.com/YOUR_USERNAME/zapmanejo-cleanbackend.git
   environment_slug: go
   build_command: go mod tidy && go build -o zapmanejo main.go
@@ -9,19 +10,22 @@ services:
   instance_count: 1
   instance_size_slug: basic-xs
   http_port: 8080
+  health_check:
+    http_path: /health
+    initial_delay_seconds: 10
+    period_seconds: 10
+    timeout_seconds: 3
+    success_threshold: 1
+    failure_threshold: 3
   envs:
-  - key: DATABASE_URL
-    scope: RUN_AND_BUILD_TIME
-    value: postgres://doadmin:AVNS__rgcE7L7XWSpfnPpEhK@zapmanejobackend2-do-user-20437728-0.g.db.ondigitalocean.com:25060/defaultdb?sslmode=require
-  - key: JWT_SECRET
-    scope: RUN_AND_BUILD_TIME
-    value: zapmanejo2025supersecretjwt
-  - key: WHATSAPP_NUMBER
-    scope: RUN_AND_BUILD_TIME
-    value: 15616520911
-  - key: WHATSAPP_VERIFY_TOKEN
-    scope: RUN_AND_BUILD_TIME
-    value: zapmanejo2025verifytoken2025
+  # SECURITY NOTE: Set these in DigitalOcean App Platform Console instead of here
+  # Go to: App Settings > Components > backend > Environment Variables
+  # Add as "encrypted" variables:
+  #   - DATABASE_URL (from your PostgreSQL database connection string)
+  #   - JWT_SECRET (generate a strong random secret: openssl rand -base64 32)
+  #   - WHATSAPP_VERIFY_TOKEN (generate a strong random token)
+  #   - WHATSAPP_NUMBER (your WhatsApp business number)
+  #   - ALLOWED_ORIGINS (your frontend URL, e.g., https://zapmanejo.com)
   - key: PORT
     scope: RUN_AND_BUILD_TIME
     value: 8080
