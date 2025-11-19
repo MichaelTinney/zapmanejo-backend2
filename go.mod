@@ -1,4 +1,4 @@
-module zapmanejo-cleanbackend
+module github.com/MichaelTinney/zapmanejo-cleanbackend
 
 go 1.23
 
