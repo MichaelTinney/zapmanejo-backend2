@@ -8,8 +8,7 @@ import (
 	"zapmanejo-cleanbackend/internal/database"
 	"zapmanejo-cleanbackend/internal/middleware"
 	"zapmanejo-cleanbackend/internal/models"
-	"github.com/paypal/paypal-checkout-sdk/v2/payments"
-	"github.com/paypal/paypal-checkout-sdk/v2/payments/capture"
+	
 )
 
 func SetupPaymentRoutes(app *fiber.App) {
